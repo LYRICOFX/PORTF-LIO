@@ -1,0 +1,116 @@
+/* Body */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    background-color: #000000;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+}
+
+h1 {
+    font-size: 4rem;
+    font-weight: bold;
+    text-align: center;
+    gap: 10px;
+    cursor: pointer;
+    color: var(--text-color);
+    margin-top: -16.6rem;
+}
+
+.span {
+    color: red;
+}
+
+.links {
+    justify-content: center;
+    display: flex;
+    gap: 20px;
+    font-size: 1.9rem;
+    font-weight: bold;
+}
+
+.links a {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    padding: 5px 10px;
+    transition: color 0.3s, border-bottom 0.3s;
+}
+
+.links a:hover,
+.links a.active {
+    color: red; /* Cor de destaque */
+    border-bottom: 2px solid red; /* Barrinha embaixo */
+}
+
+.barra {
+    font-size: 20px;
+    margin-top: 7px;
+    color: #ccc;
+}
+
+/* Estilo do ícone */
+.icon-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+/* Estilo de cada ícone */
+.icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.icon img {
+    width: 30px;
+    height: 30px;
+}
+
+/* Efeito de hover no ícone */
+.icon:hover {
+    transform: scale(1.1);
+}
+
+/* Nome do site */
+.nome {
+    color: white;
+    margin-top: -13rem;
+    font-size: 3rem;
+}
+
+/* Subnome do site */
+.sub-nome {
+    color: red;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .video-section {
+        grid-template-columns: repeat(3, 1fr); /* 3 colunas em telas médias */
+    }
+}
+
+@media (max-width: 768px) {
+    .video-section {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas em telas pequenas */
+    }
+}
+
+@media (max-width: 480px) {
+    .video-section {
+        grid-template-columns: 1fr; /* 1 coluna em telas muito pequenas */
+    }
+}

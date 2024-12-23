@@ -1,0 +1,165 @@
+* {
+    text-decoration: none;
+    scroll-behavior: smooth;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+    background-color: var(--bg-color);
+}
+
+:root {
+    --bg-color: #000000;
+    --second-bg-color: #000000;
+    --text-color: rgb(255, 255, 255);
+    --main-color: #c40000;
+}
+
+h1 {
+    font-size: 4rem;
+    font-weight: bold;
+    text-align: center;
+    gap: 10px;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+span {
+    color: var(--main-color);
+}
+
+.links {
+    justify-content: center;
+    display: flex;
+    gap: 20px;
+    font-size: 1.9rem;
+}
+
+.links a {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    padding: 5px 10px;
+    transition: color 0.3s, border-bottom 0.3s;
+}
+
+.links a:hover,
+.links a.active {
+    color: red; /* Cor de destaque */
+    border-bottom: 2px solid #ff0000; /* Barrinha embaixo */
+}
+
+.barra {
+    font-size: 20px;
+    margin-top: 7px;
+    color: #ccc;
+}
+
+/* Estilos para a seção de vídeos */
+.video-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+    column-gap: 30px; /* Espaçamento horizontal entre os vídeos */
+    row-gap: 20px; /* Espaçamento vertical entre os vídeos */
+    padding: 20px;
+    justify-items: center; 
+    margin-top: 50px;
+    max-width: 100%; /* Garantir que o container ocupe a largura total */
+}
+
+.video-container a {
+    color: var(--text-color);
+    font-size: 15px;
+}
+
+/* Estilo para o vídeo principal (mais recente) */
+.video-container iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Mantém a proporção do vídeo 16:9 */
+    border: none;
+}
+
+.main-video iframe {
+    height: 500px; /* O vídeo mais recente será maior */
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 300px; /* Tamanho padrão dos vídeos */
+}
+
+/* Estilo dos botões */
+.controls {
+    text-align: center;
+    margin-top: 20px;
+}
+
+button {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #900;
+}
+
+.pé {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-right: -40px;
+    margin-top: 30px;
+}
+
+.pédopé {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: -35px;
+}
+
+.anti-pé {
+    color: white;
+
+}
+
+.pé-span {
+    color: aqua;
+}
+
+.bxl-whatsapp {
+    color: aqua;
+}
+
+.bxl-discord-alt {
+    color: aqua;
+}
+
+.bxl-github {
+    color: aqua;
+}
+
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .video-section {
+        grid-template-columns: repeat(3, 1fr); /* 3 colunas em telas médias */
+    }
+}
+
+@media (max-width: 768px) {
+    .video-section {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas em telas pequenas */
+    }
+}
+
+@media (max-width: 480px) {
+    .video-section {
+        grid-template-columns: 1fr; /* 1 coluna em telas muito pequenas */
+    }
+}

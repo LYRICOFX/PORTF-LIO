@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo 3</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="Imagens/Logo angelo.png" type="image/x-icon">
+</head>
+<body>
+    <h1>LYRICO <span>FX</span></h1>
+
+    <div class="links">
+        <a href="#início" class="active">Início</a>
+        <div class="barra">|</div>
+        <a href="redes.html">Redes</a>
+    </div>
+
+    <section class="video-section" id="video-section">
+        <!-- Os vídeos serão carregados aqui automaticamente -->
+    </section>
+
+    <!-- Botões de controle -->
+    <div class="controls">
+        <button id="loadMore" onclick="loadMoreVideos()">Carregar Mais Vídeos</button>
+        <button id="reloadPage" onclick="reloadPage()">Atualizar Página</button>
+    </div>
+
+    <script>
+        const apiKey = 'AIzaSyB0JCZZ5YluPdcjTZsa5PCncWn8IB55Wvc'; // Coloque sua chave de API válida
+        const channelId = 'UCkA9dtpxsXLat-JfB-_1Dvg';  // ID do canal
+
+        let nextPageToken = ''; // Usado para carregar vídeos antigos
+
+        // Função para buscar os vídeos mais recentes do canal
+        async function getYouTubeVideos(pageToken = '') {
+            const url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&order=date&part=snippet&maxResults=6&pageToken=${pageToken}`;
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                console.log(data); // Para depuração, veja o que a API retorna
+
+                const videoSection = document.getElementById('video-section');
+                if (pageToken === '') {
+                    videoSection.innerHTML = ''; // Limpa antes de adicionar novos vídeos
+                }
+
+                // Verifique se há vídeos na resposta
+                if (data.items && data.items.length > 0) {
+                    data.items.forEach((item, index) => {
+                        const videoId = item.id.videoId;
+                        const videoTitle = item.snippet.title;
+                        const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
+
+                        const videoContainer = document.createElement('div');
+                        videoContainer.classList.add('video-container');
+                        if (index === 0) {
+                            videoContainer.classList.add('main-video'); // Classe para o vídeo principal (maior)
+                        }
+
+                        videoContainer.innerHTML = `
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>
+                            <h3><a href="${videoUrl}" target="_blank">${videoTitle}</a></h3>
+                        `;
+
+                        videoSection.appendChild(videoContainer);
+                    });
+
+                    // Atualiza o token para a próxima página de vídeos
+                    nextPageToken = data.nextPageToken || '';
+                } else {
+                    console.log("Nenhum vídeo encontrado!");
+                }
+            } catch (error) {
+                console.error("Erro ao buscar vídeos:", error);
+            }
+        }
+
+        // Carrega mais vídeos antigos
+        function loadMoreVideos() {
+            if (nextPageToken) {
+                getYouTubeVideos(nextPageToken);
+            } else {
+                alert('Não há mais vídeos para carregar.');
+            }
+        }
+
+        // Função para atualizar a página
+        function reloadPage() {
+            window.location.reload();
+        }
+
+        // Carrega os vídeos quando a página é carregada
+        getYouTubeVideos();
+    </script>
+
+    <footer class="pé">
+        <a href="https://wa.me/+5521951008836" target="_blank">
+            <i class='bx bxl-whatsapp'></i>
+        </a>
+
+        <a href="https://discord.com/users/734789755971043408" target="_blank">
+            <i class='bx bxl-discord-alt'></i>
+        </a>
+
+        <a href="https://github.com/" target="_blank">
+            <i class='bx bxl-github'></i>
+        </a>
+    </footer>
+
+    <div class="pédopé">
+        <footer>
+           <a href="https://github.com/" class="anti-pé">Coded by <span class="pé-span">BYTE DEV</span></a>
+        </footer>
+    </div>
+
+    <script src="script.js"></script> 
+</body>
+</html>
